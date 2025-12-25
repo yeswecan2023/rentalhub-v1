@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('main')
 <h5><i class="bi bi-plus-square-fill"></i> Add New Product</h5>
-<hr/>
+<hr />
 <nav class="my-3">
     <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item active">Add New Product</li>
+        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+        <li class="breadcrumb-item active">Add New Product</li>
     </ol>
 </nav>
 <div class="col-md-6">
@@ -14,26 +14,26 @@
         <div class="row">
             <div class="col-md-12">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" name="name" id="name" class="form-control @if($errors->has('name')) is-invalid @endif" placeholder="Enter Product Name" value="{{ old('name') }}"/>
+                <input type="text" name="name" id="name" class="form-control @if($errors->has('name')) is-invalid @endif" placeholder="Enter Product Name" value="{{ old('name') }}" />
                 <div class="invalid-feedback">{{ $errors->first('name') }}</div>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="mrp" class="form-label">M.R.P</label>
-                <input type="text" name="mrp" id="mrp" class="form-control @if($errors->has('mrp')) is-invalid @endif" placeholder="Enter M.R.P" value="{{ old('mrp') }}"/>
+                <input type="text" name="mrp" id="mrp" class="form-control @if($errors->has('mrp')) is-invalid @endif" placeholder="Enter M.R.P" value="{{ old('mrp') }}" />
                 <div class="invalid-feedback">{{ $errors->first('mrp') }}</div>
             </div>
             <div class="col-md-6">
                 <label for="price" class="form-label">Selling Price</label>
-                <input type="text" name="price" id="price" class="form-control @if($errors->has('price')) is-invalid @endif" placeholder="Enter Selling Price" value="{{ old('price') }}"/>
+                <input type="text" name="price" id="price" class="form-control @if($errors->has('price')) is-invalid @endif" placeholder="Enter Selling Price" value="{{ old('price') }}" />
                 <div class="invalid-feedback">{{ $errors->first('price') }}</div>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-12">
                 <label for="description" class="form-label">Description</label>
-                <textarea name="description" id="description" style="resize: none; height: 150px" class="form-control @if($errors->has('description')) is-invalid @endif" placeholder="Enter Description" >{{ old('description') }}</textarea>
+                <textarea name="description" id="description" style="resize: none; height: 150px" class="form-control @if($errors->has('description')) is-invalid @endif" placeholder="Enter Description">{{ old('description') }}</textarea>
                 <div class="invalid-feedback">{{ $errors->first('description') }}</div>
             </div>
         </div>

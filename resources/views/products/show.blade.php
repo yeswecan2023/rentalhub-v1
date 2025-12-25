@@ -3,7 +3,7 @@
 <h5 class="bi bi-pencil-square">Product Details</h5>
 <nav class="my-3">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/home">Home</a></li>
         <li class="breadcrumb-item active">View Product</li>
     </ol>
 </nav>
