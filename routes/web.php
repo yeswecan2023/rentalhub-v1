@@ -16,4 +16,5 @@ Route::view('register', 'auth.register')->middleware('guest');
 Route::post('/store', [RegisterController::class, 'store']);
 Route::view('login', 'auth.login')->middleware('guest')->name('login');
 Route::post('/authenticate', [LoginController::class, 'authenticate']);
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/myAds', [ProductController::class, 'myAds'])->middleware('auth');

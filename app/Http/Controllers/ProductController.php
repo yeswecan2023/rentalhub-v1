@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->paginate(2);
+        $products = Product::latest()->get();
         return view('products.index', ['products' => $products]);
     }
 
@@ -105,5 +105,9 @@ class ProductController extends Controller
         }
         return back()->withErrors('Product not found.');
     }
-    
+    public function myAds()
+    {
+        $products = Product::latest()->paginate(4);
+        return view('products.myAds', ['products' => $products]);
+    }
 }

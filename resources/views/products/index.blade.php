@@ -1,43 +1,41 @@
 @extends('layouts.app')
+
 @section('main')
-<div class="d-flex justify-content-between">
-<h5> <i class="bi bi-journal-richtext"></i> Product Details</h5>
-<a href="products/create" class="btn btn-primary"> <i class="bi bi-plus-circle"></i> New Product</a>
-</div>
-<div class="col-md-12 table-responsive mt-3">
-	<table class="table table-bordered table-hover">
-		<thead>
-			<tr>
-			<th>S.No</th>
-			<th>Image</th>
-			<th>Product Name</th>
-			<th>M.R.P</th>
-			<th>Selling Price</th>
-			<th>Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($products as $index => $product)
-			<!-- Sample Data Row -->
-			@php
-				$index = ($products->currentPage() - 1) * $products->perPage() + $loop->iteration; 
-			@endphp
-			<tr>
-				<td>{{ $index }}</td>
-				<td><img src="products/{{ $product->image }}" style="width: 50px; height: 50px; object-fit: contain" alt="Product" /></td>
-				<td><a href="products/{{ $product->id }}/show">{{ $product->name }}</a></td>
-				<td>{{ $product->mrp }}</td>
-				<td>{{ $product->price }}</td>
-				<td>
-					<a href="products/{{ $product->id }}/edit" class="btn btn-dark btn-sm"><i class="bi bi-pencil-square"></i></a>
-					<a href="products/{{ $product->id }}/delete" onclick="return confirm('Are you sure you want to delete this product?')" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
-				</td>
-			</tr>
-			@endforeach
-			<!-- More data rows can be added here -->
-		</tbody>
-	</table>
-	{{ $products->links() }}
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-semibold">Latest Rentals</h5>
+    </div>
+
+    <div class="row g-4">
+        @foreach($products as $product)
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+
+            <div class="card h-100 border-0 shadow-sm rental-card">
+                <div class="position-relative">
+                    <img src="{{ asset('products/'.$product->image) }}"
+                        class="card-img-top rental-img"
+                        alt="{{ $product->name }}">
+
+                    <span class="wishlist-icon">
+                        <i class="bi bi-heart"></i>
+                    </span>
+                </div>
+                <div class="card-body p-3">
+                    <h6 class="fw-bold mb-1">₹ {{ number_format($product->price) }}</h6>
+
+                    <p class="mb-1 text-truncate">
+                        <a href="{{ url('products/'.$product->id.'/show') }}"
+                            class="text-dark text-decoration-none">
+                            {{ $product->name }}
+                        </a>
+                    </p>
+
+                    <small class="text-muted">Kerala</small>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
 </div>
 @endsection
-    
