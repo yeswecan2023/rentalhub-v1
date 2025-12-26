@@ -12,7 +12,7 @@
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
 
             <div class="card h-100 border-0 shadow-sm rental-card">
-                <div class="position-relative">
+                <div class="position-relative overflow-hidden">
                     <img src="{{ asset('products/'.$product->image) }}"
                         class="card-img-top rental-img"
                         alt="{{ $product->name }}">

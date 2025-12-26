@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -35,6 +36,7 @@ class ProductController extends Controller
         }
 
         $product = new Product();
+        $product->user_id = Auth::id();
         $product->image = $imageName;
         $product->name = $request->name;
         $product->description = $request->description;
@@ -42,7 +44,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->save();
 
-        return back()->withSuccess('Product created successfully.');
+        return redirect('/home')->with('success', 'Product created successfully.');
 
         // if ($request->hasFile('image')) {
         //     $image = $request->file('image');
@@ -107,7 +109,9 @@ class ProductController extends Controller
     }
     public function myAds()
     {
-        $products = Product::latest()->paginate(4);
+        $products = Product::where('user_id', Auth::id())
+            ->latest()
+            ->paginate(4);
         return view('products.myAds', ['products' => $products]);
     }
 }

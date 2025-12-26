@@ -2,7 +2,6 @@
 @section('main')
 <div class="d-flex justify-content-between">
 	<h5> <i class="bi bi-journal-richtext"></i> Product Details</h5>
-	<a href="products/create" class="btn btn-primary"> <i class="bi bi-plus-circle"></i> New Product</a>
 </div>
 <div class="col-md-12 table-responsive mt-3">
 	<table class="table table-bordered table-hover">
