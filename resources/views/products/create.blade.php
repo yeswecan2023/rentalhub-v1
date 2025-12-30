@@ -25,8 +25,8 @@
                 <div class="invalid-feedback">{{ $errors->first('mrp') }}</div>
             </div>
             <div class="col-md-6">
-                <label for="price" class="form-label">Selling Price</label>
-                <input type="text" name="price" id="price" class="form-control @if($errors->has('price')) is-invalid @endif" placeholder="Enter Selling Price" value="{{ old('price') }}" />
+                <label for="price" class="form-label">Renting Price</label>
+                <input type="text" name="price" id="price" class="form-control @if($errors->has('price')) is-invalid @endif" placeholder="Enter Renting Price" value="{{ old('price') }}" />
                 <div class="invalid-feedback">{{ $errors->first('price') }}</div>
             </div>
         </div>
@@ -36,6 +36,14 @@
                 <textarea name="description" id="description" style="resize: none; height: 150px" class="form-control @if($errors->has('description')) is-invalid @endif" placeholder="Enter Description">{{ old('description') }}</textarea>
                 <div class="invalid-feedback">{{ $errors->first('description') }}</div>
             </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Location</label>
+            <input type="text"
+                name="location"
+                class="form-control"
+                placeholder="Eg: Nerkundram, Chennai"
+                required>
         </div>
         <div class="row mb-3">
             <div class="col-md-12">

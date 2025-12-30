@@ -26,6 +26,7 @@ class ProductController extends Controller
             'description' => 'required',
             'mrp' => 'required|numeric',
             'price' => 'required|numeric',
+            'location' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10000'
         ]);
 
@@ -42,6 +43,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->mrp = $request->mrp;
         $product->price = $request->price;
+        $product->location = $request->location;
         $product->save();
 
         return redirect('/home')->with('success', 'Product created successfully.');
@@ -61,8 +63,8 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::where('id', $id)->first();
-        return view('products.show', ['product' => $product]);
+            $product = Product::with('user')->findOrFail($id);
+            return view('products.show', compact('product'));
     }
 
     public function edit($id)
@@ -78,6 +80,7 @@ class ProductController extends Controller
             'description' => 'required',
             'mrp' => 'required|numeric',
             'price' => 'required|numeric',
+            'location' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10000'
         ]);
 
@@ -93,9 +96,10 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->mrp = $request->mrp;
         $product->price = $request->price;
+        $product->location = $request->location;
         $product->save();
 
-        return back()->withSuccess('Product updated successfully.');
+        return redirect('/home')->with('success', 'Product updated successfully.');
     }
 
     public function destroy($id)

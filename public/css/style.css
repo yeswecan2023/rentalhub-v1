@@ -4,18 +4,6 @@
     font-family: "Poppins", sans-serif;
 }
 
-.card {
-    max-width: 50em;
-    flex-direction: row;
-    border: 1px solid #f9f9f9;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-}
-.card img {
-    max-width: 50%;
-    margin: auto;
-    padding: 0.5em;
-    border-radius: 0.7em;
-}
 body {
     background-color: #f9fafb;
 }
@@ -54,7 +42,8 @@ input:-ms-input-placeholder {
 
 /* Card */
 .rental-card {
-    border-radius: 12px;
+    flex-direction: column !important;
+    max-width: 100%;
 }
 
 /* Image */
@@ -82,4 +71,80 @@ input:-ms-input-placeholder {
     transform: translateY(-4px);
     transition: 0.2s ease;
 }
+
+.rental-card img,
+.rental-card .card-img-top {
+    max-width: 100% !important;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    padding: 0;
+    margin: 0;
+    border-radius: 12px 12px 0 0;
+}
+
+/* Product Show Page */
+/* .product-show-card {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 20px;
+    border-radius: 12px;
+} */
+
+/* .product-show-img {
+    width: 45%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+} */
+
+/* ===== Product Show Responsive Fix ===== */
+
+.product-show-card {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+/* Image */
+.product-show-img {
+    width: 45%;
+    max-width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+
+    .product-show-card {
+        flex-direction: column; /* STACK */
+        padding: 15px;
+    }
+
+    .product-show-img {
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+/* Seller Avatar */
+.seller-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0; /* IMPORTANT: prevents shrinking */
+}
+
+/* Slightly smaller on mobile */
+@media (max-width: 768px) {
+    .seller-avatar {
+        width: 48px;
+        height: 48px;
+    }
+}
+
 
